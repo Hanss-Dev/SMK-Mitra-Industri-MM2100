@@ -8,7 +8,7 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
     background: linear-gradient(rgb(0, 51, 110), rgba(0, 157, 255, 0));
     min-height: 100vh;
     padding: 40px 20px;
@@ -57,6 +57,35 @@ body {
     width: 32px;
     height: 32px;
     transition: transform 0.3s ease;
+}
+
+.hero {
+  background-image: url('background.jpg'); /* Ganti dengan nama file gambar kamu */
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 40px;
+  text-align: center;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.overlay h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.overlay h2 {
+  font-size: 1.5em;
+  font-weight: 400;
 }
 
 /* Active state for buttons */
