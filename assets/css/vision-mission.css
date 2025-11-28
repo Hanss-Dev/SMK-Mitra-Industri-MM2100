@@ -1,304 +1,153 @@
-/* ========================================
-   Global Styles & Reset
-   ======================================== */
+/* Reset & Global */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
-    background: linear-gradient(rgb(0, 51, 110), rgba(0, 157, 255, 0));
-    min-height: 100vh;
-    padding: 40px 20px;
-    color: #0d1b2a;
+  font-family: 'Poppins', sans-serif;
+  background: #f9fafc;
+  color: #333;
+  min-height: 100vh;
+  padding: 30px 0;
 }
 
-/* ========================================
-   Container
-   ======================================== */
+/* Section Wrapper */
+.visi-misi-section {
+  padding: 80px 20px;
+  background: #fff;
+}
+
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* ========================================
-   Header Navigation
-   ======================================== */
-.header-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 50px;
-}
-
-.nav-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 20px 40px;
-    background-color: #0d1b2a;
-    color: #ffffff;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(13, 27, 42, 0.15);
-    min-width: 150px;
-}
-
-.btn-icon {
-    width: 32px;
-    height: 32px;
-    transition: transform 0.3s ease;
-}
-
-.hero {
-  background-image: url('background.jpg'); /* Ganti dengan nama file gambar kamu */
-  background-size: cover;
-  background-position: center;
-  height: 60vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.overlay {
-  background-color: rgba(0, 0, 0, 0);
-  padding: 40px;
+/* Header */
+.section-header {
   text-align: center;
-  color: #fff;
-  border-radius: 10px;
+  margin-bottom: 50px;
 }
 
-.overlay h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
+.section-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #0d1b2a;
+  margin-bottom: 15px;
 }
 
-.overlay h2 {
-  font-size: 1.5em;
-  font-weight: 400;
+.section-divider {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, #2563eb, #3b82f6);
+  margin: 0 auto;
+  border-radius: 2px;
 }
 
-/* Active state for buttons */
-.nav-btn.active {
-    background-color: #ff5722;
-    box-shadow: 0 4px 12px rgba(255, 87, 34, 0.3);
+/* Grid Layout */
+.visi-misi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
 }
 
-/* Hover state for buttons */
-.nav-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
+/* Box Styling */
+.visi-box,
+.misi-box {
+  background: linear-gradient(to bottom right, #f0f8ff, #ffffff);
+  border: 2px solid #bfdbfe;
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
 }
 
-.nav-btn:hover .btn-icon {
-    transform: scale(1.1);
+.vm-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
 }
 
-.nav-btn:active {
-    transform: translateY(0);
+.vm-text {
+  font-size: 16px;
+  color: #374151;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
 }
 
-/* ========================================
-   Content Wrapper
-   ======================================== */
-.content-wrapper {
-    position: relative;
-    min-height: 500px;
+/* Misi List */
+.misi-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* ========================================
-   Content Cards
-   ======================================== */
-.content-card {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.5s ease;
-    pointer-events: none;
+.misi-list li {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #374151;
+  line-height: 1.6;
 }
 
-.content-card.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    pointer-events: auto;
-    position: relative;
+.misi-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 18px;
+  color: #2563eb;
 }
 
-.card-inner {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    display: flex;
-    gap: 0;
+/* Decorative Circles */
+.circle-decor {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: rgba(59, 130, 246, 0.2);
+  border-radius: 50%;
+  z-index: 0;
 }
 
-/* ========================================
-   Card Image Section
-   ======================================== */
-.card-image {
-    width: 45%;
-    min-height: 500px;
-    overflow: hidden;
+.top-right {
+  top: -40px;
+  right: -40px;
 }
 
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+.bottom-left {
+  bottom: -40px;
+  left: -40px;
 }
 
-.content-card.active .card-image img {
-    animation: zoomIn 0.8s ease forwards;
-}
-
-@keyframes zoomIn {
-    from {
-        transform: scale(1.1);
-    }
-    to {
-        transform: scale(1);
-    }
-}
-
-/* ========================================
-   Card Text Section
-   ======================================== */
-.card-text {
-    width: 55%;
-    padding: 60px 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.content-title {
-    font-size: 36px;
-    font-weight: 700;
-    color: #ff5722;
-    margin-bottom: 24px;
-    letter-spacing: -0.5px;
-}
-
-.content-description {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #0d1b2a;
-    font-weight: 400;
-}
-
-/* ========================================
-   Mission List Styling
-   ======================================== */
-.mission-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.mission-item {
-    display: flex;
-    gap: 12px;
-    font-size: 16px;
-    line-height: 1.8;
-    color: #0d1b2a;
-    font-weight: 400;
-}
-
-.bullet {
-    color: #ff5722;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.5;
-    flex-shrink: 0;
-}
-
-/* ========================================
-   Responsive Design
-   ======================================== */
+/* Responsive */
 @media (max-width: 768px) {
-    body {
-        padding: 20px 15px;
-    }
+  .section-title {
+    font-size: 32px;
+  }
 
-    .header-nav {
-        gap: 15px;
-        margin-bottom: 30px;
-    }
+  .vm-title {
+    font-size: 20px;
+  }
 
-    .nav-btn {
-        padding: 16px 30px;
-        min-width: 130px;
-        font-size: 14px;
-    }
+  .vm-text,
+  .misi-list li {
+    font-size: 15px;
+  }
 
-    .btn-icon {
-        width: 28px;
-        height: 28px;
-    }
+  .visi-box,
+  .misi-box {
+    padding: 30px;
+  }
 
-    .card-inner {
-        flex-direction: column;
-    }
-
-    .card-image {
-        width: 100%;
-        min-height: 250px;
-    }
-
-    .card-text {
-        width: 100%;
-        padding: 30px 25px;
-    }
-
-    .content-title {
-        font-size: 28px;
-        margin-bottom: 18px;
-    }
-
-    .content-description,
-    .mission-item {
-        font-size: 14px;
-        line-height: 1.7;
-    }
-
-    .mission-list {
-        gap: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .header-nav {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .nav-btn {
-        width: 100%;
-        max-width: 200px;
-    }
-
-    .card-text {
-        padding: 25px 20px;
-    }
-
-    .content-title {
-        font-size: 24px;
-    }
+  .circle-decor {
+    width: 80px;
+    height: 80px;
+  }
 }

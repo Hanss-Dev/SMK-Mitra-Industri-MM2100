@@ -1,0 +1,136 @@
+/* Reset Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 30px 0;
+}
+
+/* Section Berita */
+#berita {
+  padding: 80px 20px;
+  background: linear-gradient(rgb(255, 255, 255), rgba(15, 31, 125, 0.59));
+}
+
+.berita-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.berita-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.berita-header h2 {
+  font-size: 40px;
+  font-weight: bold;
+  color: #1e3a8a;
+  margin-bottom: 10px;
+}
+
+.berita-divider {
+  width: 96px;
+  height: 6px;
+  background: linear-gradient(to right, #2563eb, #3b82f6);
+  margin: 0 auto;
+  border-radius: 999px;
+}
+
+/* Grid */
+.berita-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 30px;
+}
+
+/* Card */
+.berita-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.berita-card:hover {
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+.berita-image {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.berita-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.berita-label {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #2563eb;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Content */
+.berita-content {
+  padding: 20px;
+}
+
+.berita-date {
+  font-size: 14px;
+  color: #2563eb;
+  margin-bottom: 8px;
+}
+
+.berita-content h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1e3a8a;
+  margin-bottom: 12px;
+}
+
+.berita-desc {
+  font-size: 15px;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+/* Button */
+.berita-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2563eb;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.berita-btn:hover {
+  color: #1e40af;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .berita-header h2 { font-size: 32px; }
+  .berita-content h3 { font-size: 18px; }
+  .berita-desc { font-size: 14px; }
+}

@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9fafc;
+  color: #333;
+  min-height: 100vh;
+  padding: 30px 0;
+}
+
+.jurusan-section {
+  padding: 80px 20px;
+  background: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #0d1b2a;
+  margin-bottom: 15px;
+}
+
+.section-divider {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, #2563eb, #3b82f6);
+  margin: 0 auto 20px;
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.jurusan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.jurusan-card {
+  background: #fff;
+  border: 2px solid #dbeafe;
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.jurusan-card:hover {
+  border-color: #3b82f6;
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* Icon */
+.card-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: transform 0.3s ease;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  font-size: 48px;
+  color: #fff;
+  display: block;
+}
+
+.jurusan-card:hover .card-icon {
+  transform: scale(1.1);
+}
+
+/* Text */
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0d1b2a;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}

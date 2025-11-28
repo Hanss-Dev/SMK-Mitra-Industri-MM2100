@@ -524,6 +524,23 @@ a {
 }
 
 @media (max-width: 480px) {
+  .features {
+    padding: 80px 0;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .features-container {
+    padding: 0 8px;
+  }
+
+  .feature-card {
+    padding: 10px;
+  }
+
   .header {
     padding: 0.6rem 1rem;
   }
@@ -554,9 +571,19 @@ a {
 }/* ============================= */
 /* 💡 Features Section          */
 /* ============================= */
+.card-img {
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+}
+
 .nilai-utama {
+  /* background-image: url('../img/gedung.png'); */
+  background: linear-gradient(rgb(4 29 84 / 83%), rgb(19 57 141 / 78%)),
+    url('../img/gedung.png'); /* path gambar */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   padding: 50px 20px;
-  background: linear-gradient(rgb(0, 51, 110), rgba(175, 224, 255, 0), rgb(0, 51, 110));
   text-align: center;
 }
 
@@ -629,7 +656,7 @@ a {
 
 .feature-card {
   background: #fff;
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
@@ -647,10 +674,10 @@ a {
 }
 
 .feature-card h3 {
-  color: #003366;
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  font-weight: 600;
+    color: #003366;
+    font-size: 1.5rem;
+    margin-top: 15px;
+    font-weight: 600;
 }
 
 .feature-card p {

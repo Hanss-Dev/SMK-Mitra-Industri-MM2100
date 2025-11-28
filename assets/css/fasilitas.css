@@ -1,0 +1,119 @@
+/* ===== Reset Global ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+  min-height: 100vh;
+  padding: 30px 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== Section Fasilitas ===== */
+#fasilitas {
+  background: linear-gradient(to bottom, #ffffff, #e0f2fe);
+  padding: 80px 20px;
+}
+
+.fasilitas-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.fasilitas-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.fasilitas-header h2 {
+  font-size: 40px;
+  font-weight: bold;
+  color: #1e3a8a;
+  margin-bottom: 10px;
+}
+
+.fasilitas-divider {
+  width: 96px;
+  height: 6px;
+  background: linear-gradient(to right, #2563eb, #3b82f6);
+  margin: 0 auto;
+  border-radius: 999px;
+}
+
+/* Grid */
+.fasilitas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* Card */
+.fasilitas-card {
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.fasilitas-image {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.fasilitas-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.fasilitas-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Overlay */
+.fasilitas-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(30,58,138,0.9), rgba(30,58,138,0.5), transparent);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.fasilitas-overlay h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.fasilitas-overlay p {
+  font-size: 14px;
+  color: #dbeafe;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .fasilitas-header h2 { font-size: 32px; }
+  .fasilitas-overlay h3 { font-size: 18px; }
+  .fasilitas-overlay p { font-size: 13px; }
+}
