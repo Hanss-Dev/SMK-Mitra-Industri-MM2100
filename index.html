@@ -110,11 +110,37 @@
 
       <!-- ======= Hero Section ======= -->
   <main>
-    <div class="hero-new";>
+    <!-- <div class="hero-new";>
       <video autoplay loop muted playsinline src="assets/video/videohero.mp4"></video>
       <h5>SELAMAT DATANG DI</h5>
       <h1>SMK MITRA INDUSTRI<br>MM2100</h1>
+    </div> -->
+
+  <div class="slider-container">
+    <div class="slider">
+      <div class="slide">
+        <img src="assets/img/gedung.png" alt="Lebih dari Sekadar Kuliah, Kami adalah Inkubator Talenta Global!">
+      </div>
+      <div class="slide">
+        <img src="assets/img/foto-jendral.jpeg" alt="Didirikan di dalam Kawasan Industri MM2100, Bekasi">
+      </div>
+      <div class="slide">
+        <img src="assets/img/LISTRIK.jpg" alt="Didirikan oleh Expert dan Profesional Industri">
+      </div>
+      <div class="slide">
+        <img src="assets/img/MESIN.jpg" alt="Di dalam MM2100 – Kawasan industri terbesar se-Asia Tenggara">
+      </div>
+      <div class="slide">
+        <img src="assets/img/HOTEL.jpg" alt="Kampus kreatif, profesional, dengan spirit entrepreneural unggul.">
+      </div>
     </div>
+
+    <!-- Tombol Navigasi -->
+    <div class="slider-buttons">
+      <button class="prev">❮</button>
+      <button class="next">❯</button>
+    </div>
+  </div>
 
     <!-- ======= Features Section ======= -->
     <section class="jendral" id="tentang">
@@ -472,18 +498,35 @@
       <!--=============== MAIN JS ===============-->
       <script src="assets/js/main.js"></script>
       <script>
-  // Filter tabs (opsional, vanilla JS)
-  document.querySelectorAll('.network-tabs .tab').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.network-tabs .tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.getAttribute('data-filter');
-      document.querySelectorAll('.network-card').forEach(card => {
-        const type = card.getAttribute('data-type');
-        card.style.display = (filter === 'all' || filter === type) ? '' : 'none';
-      });
-    });
-  });
-</script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const slider = document.querySelector(".slider");
+          const slides = document.querySelectorAll(".slide");
+          const prevBtn = document.querySelector(".prev");
+          const nextBtn = document.querySelector(".next");
+
+          let currentIndex = 0;
+          const totalSlides = slides.length;
+
+          function updateSlider() {
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+          }
+
+          nextBtn.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+          });
+
+          prevBtn.addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlider();
+          });
+
+          // Auto Slide tiap 5 detik
+          setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+          }, 5000);
+        });
+      </script>
    </body>
 </html>
