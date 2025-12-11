@@ -760,6 +760,10 @@ img {
 
 .nilai-item {
   width: 100%;
+  display: flex;
+  flex-direction: column; /* susun gambar di atas, teks di bawah */
+  align-items: center;    /* rata tengah horizontal */
+  justify-content: center;/* rata tengah vertikal */
   text-align: center;
 }
 
@@ -778,8 +782,27 @@ img {
   color: #fff;
   font-size: clamp(var(--normal-font-size), 1rem + 0.5vw, 1.25rem);
   line-height: 1.6;
+  text-align: center; /* pastikan teks rata tengah */
 }
 
+/* .nilai-utama {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.nilai-utama h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.nilai-gabungan img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+} */
 /*=============== KEUNGGULAN SECTION 2===============*/
 /* Section wrapper */
 .keunggulan-section {
@@ -1410,12 +1433,17 @@ img {
   }
 
   .nilai-grid {
-    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    grid-template-columns: 1fr; /* satu kolom */
+    gap: 20px;
   }
 
   .nilai-item img {
-    max-width: 130px;
+    max-width: 120px;
     max-height: 120px;
+  }
+
+  .nilai-item p {
+    font-size: 1rem;
   }
 
   .mm2100-support {
@@ -1447,7 +1475,12 @@ img {
   }
 
   .nilai-grid {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* dua kolom */
+  }
+
+  .nilai-item img {
+    max-width: 130px;
+    max-height: 130px;
   }
 }
 
@@ -1483,7 +1516,7 @@ img {
   }
 
   .nilai-grid {
-    grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
   }
 }
 
@@ -1561,6 +1594,6 @@ img {
     grid-template-columns: repeat(3, 1fr);
   }
   .nilai-grid {
-    grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
   }
 }
