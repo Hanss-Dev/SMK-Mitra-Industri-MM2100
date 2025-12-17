@@ -1,156 +1,145 @@
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <!--=============== REMIXICONS ===============-->
-      <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/jurusan1.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 
-      <!--=============== CSS ===============-->
-      <link rel="stylesheet" href="assets/css/style.css">
+  <title>SMK MITRA INDUSTRI</title>
+</head>
 
-      <title>SMK MITRA INDUSTRI</title>
-   </head>
-   <body>
-      <!--=============== HEADER ===============-->
-      <header class="header">
-         <nav class="nav container">
-            <div class="nav__data">
-               <a href="#" class="nav__logo">
-                  <img src="logo-mt.png" alt="SMK MITRA INDUSTRI"/>
-               </a>
-               
-               <div class="nav__toggle" id="nav-toggle">
-                  <i class="ri-menu-line nav__burger"></i>
-                  <i class="ri-close-line nav__close"></i>
-               </div>
+<body>
+  <!--=============== HEADER ===============-->
+  <header class="header">
+    <nav class="nav container">
+      <div class="nav__data">
+        <a href="#" class="nav__logo">
+          <img src="../assets/img/logo-mt.png" alt="SMK MITRA INDUSTRI" />
+        </a>
+
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="ri-menu-line nav__burger"></i>
+          <i class="ri-close-line nav__close"></i>
+        </div>
+      </div>
+
+      <!--=============== NAV MENU ===============-->
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li>
+            <a href="#" class="nav__link">Beranda</a>
+          </li>
+
+          <!--=============== DROPDOWN 1 ===============-->
+          <li class="dropdown__item">
+            <div class="nav__link">
+              Profil
+              <i class="ri-arrow-down-s-line dropdown__arrow"></i>
             </div>
 
-            <!--=============== NAV MENU ===============-->
-            <div class="nav__menu" id="nav-menu">
-               <ul class="nav__list">
-                  <li><a href="#" class="nav__link">Beranda</a></li>
+            <ul class="dropdown__menu">
+              <li>
+                <a href="#" class="dropdown__link">Visi & Misi</a>
+              </li>
+            </ul>
+          </li>
 
-                  <!--=============== DROPDOWN 1 ===============-->
-                  <li class="dropdown__item">
-                     <div class="nav__link">
-                        Profil <i class="ri-arrow-down-s-line dropdown__arrow"></i>
-                     </div>
-
-                     <ul class="dropdown__menu">
-                        <li>
-                           <a href="#" class="dropdown__link">Visi & Misi</a>                          
-                        </li>
-
-                        <!--=============== DROPDOWN SUBMENU ===============-->
-                        <!-- <li class="dropdown__subitem">
-                           <div class="dropdown__link">
-                              <i class="ri-bar-chart-line"></i> Reports <i class="ri-add-line dropdown__add"></i>
-                           </div>
-
-                           <ul class="dropdown__submenu">
-                              <li>
-                                 <a href="#" class="dropdown__sublink">
-                                    <i class="ri-file-list-line"></i> Documents
-                                 </a>
-                              </li>
-      
-                              <li>
-                                 <a href="#" class="dropdown__sublink">
-                                    <i class="ri-cash-line"></i> Payments
-                                 </a>
-                              </li>
-      
-                              <li>
-                                 <a href="#" class="dropdown__sublink">
-                                    <i class="ri-refund-2-line"></i> Refunds
-                                 </a>
-                              </li>
-                           </ul>
-                        </li> -->
-                     </ul>
-                  </li>
-
-                  <!--=============== DROPDOWN 2 ===============-->
-                  <li class="dropdown__item">
-                     <div class="nav__link">
-                        Kompetensi Keahlian <i class="ri-arrow-down-s-line dropdown__arrow"></i>
-                     </div>
-
-                     <ul class="dropdown__menu">
-                        <li>
-                           <a href="#" class="dropdown__link">Teknik Instalasi Tenaga Listrik</a>                          
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">Teknik Elektronika Industri</a>
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">Teknik Mesin</a>
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">Teknik Kendaraan Ringan Otomotif</a>
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">Teknik Bisnis Sepeda Motor</a>
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">Teknik Kimia Industri</a>
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">Akuntansi</a>
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">Perhotelan</a>
-                        </li>
-                     </ul>
-                  </li>
-
-                  <li><a href="#" class="nav__link">Fasilitas</a></li>
-                  <li><a href="#" class="nav__link">Berita</a></li>
-                  <li><a href="#" class="nav__link">PPDB</a></li>
-                  <li><a href="#" class="nav__link">Kontak</a></li>
-               </ul>
+          <!--=============== DROPDOWN 2 ===============-->
+          <li class="dropdown__item">
+            <div class="nav__link">
+              Kompetensi Keahlian
+              <i class="ri-arrow-down-s-line dropdown__arrow"></i>
             </div>
-         </nav>
-      </header>
 
-      <!-- ======= Hero Section ======= -->
-  <main>
+            <ul class="dropdown__menu">
+              <li><a href="#" class="dropdown__link">Teknik Instalasi Tenaga Listrik</a></li>
+              <li><a href="#" class="dropdown__link">Teknik Elektronika Industri</a></li>
+              <li><a href="#" class="dropdown__link">Teknik Mesin</a></li>
+              <li><a href="#" class="dropdown__link">Teknik Kendaraan Ringan Otomotif</a></li>
+              <li><a href="#" class="dropdown__link">Teknik Bisnis Sepeda Motor</a></li>
+              <li><a href="#" class="dropdown__link">Teknik Kimia Industri</a></li>
+              <li><a href="#" class="dropdown__link">Akuntansi</a></li>
+              <li><a href="#" class="dropdown__link">Perhotelan</a></li>
+            </ul>
+          </li>
 
+          <li><a href="#" class="nav__link">Fasilitas</a></li>
+          <li><a href="#" class="nav__link">Berita</a></li>
+          <li><a href="#" class="nav__link">PPDB</a></li>
+          <li><a href="#" class="nav__link">Kontak</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-  </main>
+  <!-- ======= Hero Section ======= -->
+  <article class="jurusan-article">
+    <header class="article-header hero-kimia">
+      <div class="overlay">
+        <h1>Teknik Kimia Industri</h1>
+        <p>
+          Siap kerja di industri proses dan manufaktur kimia.
+        </p>
+      </div>
+    </header>
 
-  <!-- ======= Popup PPDB ======= -->
-  <div id="ppdb-popup" class="popup">
-    <div class="popup-content">
-      <a href="PPDB.html">
-        <img src="brosur-ppdb.png" alt="PPDB SMK Mitra Industri" />
-      </a>
-      <button class="close-btn" aria-label="Tutup popup">×</button>
-    </div>
-  </div>
+    <section class="article-content">
+      <h2>Pengenalan Jurusan</h2>
+      <p>
+        Mempelajari proses produksi kimia, pengolahan bahan, serta penerapan keselamatan dan kesehatan kerja industri.
+      </p>
+
+      <h2>Program Unggulan</h2>
+      <p>Untuk mendukung kompetensi siswa, jurusan ini memiliki beberapa program unggulan:</p>
+
+      <ul>
+        <li>⚗️ Proses Industri Kimia</li>
+        <li>🧪 Praktikum Laboratorium</li>
+        <li>🏭 Magang Industri</li>
+      </ul>
+
+      <h2>Prospek Karir</h2>
+      <p>
+        Operator produksi, quality control, atau tenaga laboratorium industri.
+      </p>
+    </section>
+
+    <footer class="article-footer">
+      <a href="ppdb.html" class="btn-ppdb">Daftar PPDB</a>
+    </footer>
+  </article>
 
   <!-- ======= Footer ======= -->
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-column">
         <a href="index.html" class="logo" aria-label="SMK MITRA INDUSTRI">
-          <img src="logo-mt.png" alt="SMK MITRA INDUSTRI" /><br />
+          <img src="../assets/img/logo-mt.png" alt="SMK MITRA INDUSTRI" />
         </a>
-        <p>SMK Mitra Industri MM2100 adalah sekolah kejuruan unggulan yang berfokus pada pendidikan vokasi berkualitas dan kerjasama industri.</p>
+
+        <p>SMK Mitra Industri MM2100 adalah sekolah kejuruan unggulan ...</p>
+
         <div class="social-links">
-          <a href="https://m.facebook.com/smkmitraindustri" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.instagram.com/mitra_industri" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://youtube.com/@smkmitraindustrimmofficial" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="https://www.tiktok.com/@mitra_industri" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://m.facebook.com/smkmitraindustri" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/mitra_industri" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://youtube.com/@smkmitraindustrimmofficial" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://www.tiktok.com/@mitra_industri" aria-label="Tiktok">
+            <i class="fab fa-tiktok"></i>
+          </a>
         </div>
       </div>
 
@@ -193,14 +182,14 @@
           </li>
         </ul>
       </div>
-    </div> <!-- End .footer-content -->
+    </div>
 
     <div class="copyright">
-      Copyright © 2025 SMK Mitra Industri MM2100. All rights reserved.
+      © 2025 SMK Mitra Industri MM2100. All rights reserved.
     </div>
   </footer>
 
-      <!--=============== MAIN JS ===============-->
-      <script src="C:\Users\HYPE AMD\Downloads\testing\main.js"></script>
-   </body>
+  <!--=============== MAIN JS ===============-->
+  <script src="../assets/js/main.js"></script>
+</body>
 </html>

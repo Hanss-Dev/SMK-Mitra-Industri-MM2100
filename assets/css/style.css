@@ -840,42 +840,98 @@ img {
   gap: 25px;
 }
 
-/* Card */
-.keunggulan-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 25px;
-  text-align: center;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.keunggulan {
+padding: 60px 20px;
+background: #f5f7fb;
+text-align: center;
 }
 
-.keunggulan-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+
+.keunggulan__title {
+font-size: clamp(1.8rem, 3vw, 3rem);
+font-weight: 600;
+margin-bottom: 50px;
+color: #003366;
 }
 
-/* Icon */
-.keunggulan-card .icon {
-  font-size: 2rem;
-  margin-bottom: 15px;
-  color: #0066cc;
+
+.keunggulan__grid {
+max-width: 1100px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 30px;
 }
 
-/* Card title */
-.keunggulan-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #003366;
+
+.keunggulan__item {
+background: #ffffff;
+border-radius: 14px;
+padding: 30px 20px;
+box-shadow: 0 10px 25px rgba(0,0,0,.08);
+transition: transform .3s ease, box-shadow .3s ease;
 }
 
-/* Card text */
-.keunggulan-card p {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.5;
+
+.keunggulan__item:hover {
+transform: translateY(-6px);
+box-shadow: 0 16px 30px rgba(0,0,0,.12);
 }
+
+
+.keunggulan__item i {
+font-size: 42px;
+color: #004bb5;
+margin-bottom: 15px;
+}
+
+
+.keunggulan__item p {
+font-size: 15px;
+line-height: 1.6;
+color: #333;
+}
+
+/* Container utama */
+    .info-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 20px;
+      background: #f9f9f9;
+    }
+
+    /* Card tiap item */
+    .info-card {
+      flex: 1 1 180px;
+      max-width: 220px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    /* Icon */
+    .info-card i {
+      font-size: 5.2rem;
+      color: #6366f1; /* biru indigo */
+      margin-bottom: 12px;
+    }
+
+    /* Text */
+    .info-card p {
+      font-size: 0.95rem;
+      color: #000;
+      line-height: 1.4;
+    }
 
 .program-section {
   padding: 40px 20px;
@@ -1210,46 +1266,111 @@ img {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/*=============== POPUP SECTION ===============*/
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: var(--z-popup);
-  padding: 20px;
+.comment-section {
+  max-width: 1200px;
+  background: linear-gradient(rgba(4, 29, 84, 0.83), rgba(19, 57, 141, 0.78)), url(../img/gedung.png);
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #fff;
 }
 
-.popup-content {
-  background: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  max-width: 90%;
-  width: 400px;
+.comment-section h2 {
   text-align: center;
+  margin-bottom: 10px;
 }
 
-.close-btn {
-  background: var(--accent-blue);
+.comment-section .divider {
+  width: 60px;
+  height: 3px;
+  background: #ffffff;
+  margin: 0 auto 30px auto;
+}
+
+.comment-section .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.comment-section .col {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Kontak */
+.comment-section .contact-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-section .contact-info li {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #fff;
+}
+
+.comment-section .contact-info i {
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+/* Form */
+.comment-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comment-section input,
+.comment-section textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.comment-section button {
+  background: #0750ff;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 12px;
   border-radius: 6px;
   cursor: pointer;
-  margin-top: 15px;
-  font-weight: var(--font-semi-bold);
+  font-size: 15px;
   transition: background 0.3s ease;
-  font-size: clamp(0.85rem, 1.5vw, 1rem);
 }
 
-.close-btn:hover {
-  background: var(--primary-blue);
+.comment-section button:hover {
+  background: #45a049;
 }
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .comment-section .row {
+    flex-direction: column;
+  }
+
+  .comment-section {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .comment-section .contact-info li {
+    font-size: 13px;
+  }
+
+  .comment-section input,
+  .comment-section textarea,
+  .comment-section button {
+    font-size: 13px;
+  }
+}
+
 
 /*=============== FOOTER SECTION ===============*/
 .footer {
