@@ -1268,11 +1268,15 @@ color: #333;
 }
 
 .comment-section {
-  max-width: 1200px;
   background: linear-gradient(rgba(4, 29, 84, 0.83), rgba(19, 57, 141, 0.78)), url(../img/gedung.png);
   padding: 30px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   color: #fff;
+}
+
+.containerCom {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .comment-section h2 {
