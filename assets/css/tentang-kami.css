@@ -1,7 +1,11 @@
-/* Reset */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Poppins',sans-serif; line-height:1.7; color:#333; background:#f9fafc; }
-
+body {
+  font-family: var(--body-font);
+  font-size: clamp(var(--normal-font-size), 1rem + 0.3vw, 1.1rem);
+  background-color: var(--body-color);
+  overflow-x: hidden;
+  line-height: 1.6;
+  padding: 75px 0 0 0;
+}
 /* Breadcrumb */
 .breadcrumbs-bg {
   background-size:cover; background-position:center;

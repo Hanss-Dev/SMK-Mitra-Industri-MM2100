@@ -1,17 +1,11 @@
-/* Reset */
-* { 
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box; 
+body {
+  font-family: var(--body-font);
+  font-size: clamp(var(--normal-font-size), 1rem + 0.3vw, 1.1rem);
+  background-color: var(--body-color);
+  overflow-x: hidden;
+  line-height: 1.6;
+  padding: 85px 0 0 0;
 }
-
-body { 
-  font-family: 'Poppins', sans-serif; 
-  line-height: 1.6; 
-  min-height: 100vh; 
-  padding: 30px 0;
-}
-
 /* Contact Section */
 #contact {
   padding: 80px 20px;
@@ -21,7 +15,7 @@ body {
 .contact-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 20px;
 }
 
 .contact-header {
