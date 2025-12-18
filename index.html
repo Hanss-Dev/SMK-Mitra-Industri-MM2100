@@ -716,5 +716,17 @@
     });
   });
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const grid = document.querySelector(".nilai-grid");
+    const items = grid.querySelectorAll(".nilai-item");
+    if (items.length % 2 === 1) {
+      // Hapus class sebelumnya
+      items.forEach(item => item.classList.remove("last-center"));
+      // Tambahkan class ke item terakhir
+      items[items.length - 1].classList.add("last-center");
+    }
+  });
+</script>
    </body>
 </html>
