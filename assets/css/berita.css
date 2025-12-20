@@ -1,233 +1,164 @@
-/* Section Berita */
 #berita {
-  padding: 80px 20px;
-  background: #00336e;
-  margin-bottom: 1px;
+  padding: 60px 20px;
+  background: #f9fafb;
 }
 
 .berita-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
 .berita-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .berita-header h2 {
-  font-size: clamp(28px, 5vw, 40px);
-  font-weight: bold;
-  color: #ffffff;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: #0f172a;
   margin-bottom: 10px;
 }
 
 .berita-divider {
-  width: 96px;
-  height: 6px;
-  background: linear-gradient(to right, #2563eb, #3b82f6);
+  width: 80px;
+  height: 5px;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  border-radius: 999px;
   margin: 0 auto;
+}
+
+/* Slider wrapper */
+.berita-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+
+.berita-slider::-webkit-scrollbar {
+  height: 8px;
+}
+
+.berita-slider::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
   border-radius: 999px;
 }
 
-/* Grid */
-.berita-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: 30px;
-}
-
-/* Card */
 .berita-card {
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  flex: 0 0 300px; /* lebar tiap card */
   background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .berita-card:hover {
-  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
   transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .berita-image {
   position: relative;
-  height: 250px;
-  overflow: hidden;
 }
 
 .berita-image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.berita-card:hover .berita-image img {
-  transform: scale(1.05);
+  border-radius: 12px 12px 0 0;
+  display: block;
 }
 
 .berita-label {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  bottom: 8px;
+  left: 8px;
   background: #2563eb;
   color: #fff;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
   font-weight: 600;
-  z-index: 1;
 }
 
-/* Content */
 .berita-content {
-  padding: 20px;
+  padding: 12px;
 }
 
 .berita-date {
-  font-size: 14px;
-  color: #2563eb;
-  margin-bottom: 8px;
-  font-weight: 500;
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 6px;
 }
 
 .berita-content h3 {
-  font-size: clamp(18px, 3vw, 20px);
-  font-weight: bold;
-  color: #1e3a8a;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 8px;
+}
+
+.berita-desc {
+  font-size: 0.875rem;
+  color: #475569;
   margin-bottom: 12px;
   line-height: 1.4;
 }
 
-.berita-desc {
-  font-size: clamp(14px, 2vw, 15px);
-  color: #6b7280;
-  margin-bottom: 16px;
-  line-height: 1.6;
-}
-
-/* Button */
 .berita-btn {
-  background: none;
+  background: #2563eb;
+  color: #fff;
   border: none;
-  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #2563eb;
   cursor: pointer;
-  transition: color 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
+  transition: background 0.2s ease;
 }
 
 .berita-btn:hover {
-  color: #1e40af;
-  text-decoration: underline;
+  background: #1e40af;
 }
 
-/* Responsive Breakpoints */
-
-/* Tablet */
-@media (max-width: 1024px) {
-  #berita {
-    padding: 60px 15px;
-  }
-  
-  .berita-grid {
-    gap: 25px;
-  }
+.berita-container {
+  position: relative; /* supaya tombol bisa absolute di dalamnya */
 }
 
-/* Mobile Large */
-@media (max-width: 768px) {
-  #berita {
-    padding: 50px 15px;
-  }
-  
-  .berita-header {
-    margin-bottom: 30px;
-  }
-  
-  .berita-grid {
-    gap: 20px;
-    grid-template-columns: 1fr;
-  }
-  
-  .berita-image {
-    height: 220px;
-  }
-  
-  .berita-content {
-    padding: 18px;
-  }
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 10px;
+  pointer-events: none; /* biar area kosong nggak ganggu klik */
 }
 
-/* Mobile Small */
-@media (max-width: 480px) {
-  body {
-    padding: 15px 0;
-  }
-  
-  #berita {
-    padding: 40px 10px;
-  }
-  
-  .berita-container {
-    padding: 0 10px;
-  }
-  
-  .berita-header {
-    margin-bottom: 25px;
-  }
-  
-  .berita-divider {
-    width: 72px;
-    height: 5px;
-  }
-  
-  .berita-grid {
-    gap: 20px;
-  }
-  
-  .berita-image {
-    height: 200px;
-  }
-  
-  .berita-label {
-    top: 12px;
-    left: 12px;
-    padding: 5px 12px;
-    font-size: 13px;
-  }
-  
-  .berita-content {
-    padding: 16px;
-  }
-  
-  .berita-date {
-    font-size: 13px;
-    margin-bottom: 6px;
-  }
-  
-  .berita-desc {
-    margin-bottom: 14px;
-  }
-  
-  .berita-btn {
-    font-size: 13px;
-  }
+.slider-nav button {
+  pointer-events: auto; /* aktifkan klik di tombol */
+  background: rgba(37,99,235,0.9);
+  color: #fff;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;              /* center isi */
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-/* Extra Small Screens */
-@media (max-width: 360px) {
-  .berita-image {
-    height: 180px;
-  }
-  
-  .berita-content {
-    padding: 14px;
-  }
+.slider-nav button:hover {
+  background: #1e40af;
+  transform: scale(1.1); /* efek zoom saat hover */
+}
+
+.slider-nav svg {
+  width: 24px;
+  height: 24px;
 }
