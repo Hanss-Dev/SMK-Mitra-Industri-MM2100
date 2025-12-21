@@ -136,7 +136,7 @@ body {
 /* Tablet Responsive (max-width: 1024px) */
 @media (max-width: 1024px) {
   .container {
-    padding: 0 30px;
+    padding: 0px;
   }
   
   .page-title {
