@@ -240,7 +240,7 @@ img {
 /*===============================================
   DROPDOWN MENU
 ===============================================*/
-.dropdown__item {
+/* .dropdown__item {
   cursor: pointer;
 }
 
@@ -308,7 +308,87 @@ img {
 
 .dropdown__sublink {
   background-color: var(--black-color-lighten);
-}
+} */
+
+    .dropdown__item {
+      cursor: pointer;
+    }
+
+    .dropdown__arrow {
+      font-size: 1.25rem;
+      font-weight: initial;
+      transition: transform 0.4s;
+      color: #fff; /* tambahkan warna supaya terlihat */
+    }
+
+    .dropdown__link,
+    .dropdown__sublink {
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      column-gap: 0.5rem;
+      font-weight: var(--font-semi-bold);
+      transition: background-color 0.3s;
+    }
+
+    .dropdown__link i,
+    .dropdown__sublink i {
+      font-size: 1.25rem;
+      font-weight: initial;
+    }
+
+    .dropdown__link:hover,
+    .dropdown__sublink:hover {
+      background-color: var(--black-color);
+    }
+
+    .dropdown__menu,
+    .dropdown__submenu {
+      background: linear-gradient(rgba(175, 205, 255, 0.81), rgb(0, 51, 110));
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+      border-radius: 8px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+    }
+
+    .dropdown__menu a {
+      display: block;
+      padding: 12px 16px;
+      color: #fffdfd;
+      white-space: nowrap;
+      text-decoration: none;
+      border-radius: 8px;
+      filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
+    }
+
+    .dropdown__item:hover .dropdown__menu,
+    .dropdown__subitem:hover > .dropdown__submenu {
+      max-height: 1000px;
+      transition: max-height 0.4s ease-in;
+    }
+
+    .dropdown__item:hover .dropdown__arrow {
+      transform: rotate(180deg);
+    }
+
+    .dropdown__add {
+      margin-left: auto;
+    }
+
+    .dropdown__sublink {
+      background-color: var(--black-color-lighten);
+    }
+
+    /* tambahan untuk klik di mobile */
+    .dropdown__item.open .dropdown__menu {
+      max-height: 1000px;
+      transition: max-height 0.4s ease-in;
+    }
+    .dropdown__item.open .dropdown__arrow {
+      transform: rotate(180deg);
+    }
 
 /*===============================================
   HERO SECTION
