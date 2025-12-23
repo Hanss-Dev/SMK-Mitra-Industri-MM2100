@@ -390,19 +390,6 @@ img {
       transform: rotate(180deg);
     }
 
-/* =========================
-   DISABLE HOVER ON MOBILE
-========================= */
-@media (max-width: 1118px) {
-  .dropdown__item:hover .dropdown__menu {
-    max-height: 0 !important;
-  }
-
-  .dropdown__item:hover .dropdown__arrow {
-    transform: none !important;
-  }
-}
-
 /*===============================================
   HERO SECTION
 ===============================================*/

@@ -14,9 +14,6 @@ if (navToggle && navMenu) {
 /* =========================
    DROPDOWN MENU (klik arrow)
 ========================= */
-/* =========================
-   DROPDOWN MOBILE FINAL
-========================= */
 document.addEventListener("DOMContentLoaded", () => {
   const dropdownItems = document.querySelectorAll(".dropdown__item");
 
@@ -24,13 +21,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const trigger = item.querySelector(".nav__link");
 
     trigger.addEventListener("click", (e) => {
-      if (window.innerWidth <= 1118) {
+      if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
         e.preventDefault();
+        e.stopPropagation(); // WAJIB biar tidak langsung ketutup
         item.classList.toggle("open");
       }
     });
   });
 });
+
+/* =========================
+   CLOSE DROPDOWN ON OUTSIDE CLICK
+========================= */
+document.addEventListener("click", (e) => {
+  // hanya untuk TOUCH device
+  if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
+    const clickedInsideDropdown = e.target.closest(".dropdown__item");
+
+    if (!clickedInsideDropdown) {
+      document
+        .querySelectorAll(".dropdown__item.open")
+        .forEach(item => item.classList.remove("open"));
+    }
+  }
+});
+
 
 /* =========================
    SLIDER HERO (smi-lite)
