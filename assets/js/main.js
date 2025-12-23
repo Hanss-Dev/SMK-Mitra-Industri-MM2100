@@ -1,4 +1,3 @@
-
 /* =========================
    NAV TOGGLE (AMAN)
 ========================= */
@@ -15,18 +14,20 @@ if (navToggle && navMenu) {
 /* =========================
    DROPDOWN MENU (klik arrow)
 ========================= */
+/* =========================
+   DROPDOWN MOBILE FINAL
+========================= */
 document.addEventListener("DOMContentLoaded", () => {
   const dropdownItems = document.querySelectorAll(".dropdown__item");
 
   dropdownItems.forEach(item => {
-    const link = item.querySelector(".nav__link");
-    link.addEventListener("click", () => {
-      // tutup semua dropdown lain
-      dropdownItems.forEach(i => {
-        if (i !== item) i.classList.remove("open");
-      });
-      // toggle dropdown yang diklik
-      item.classList.toggle("open");
+    const trigger = item.querySelector(".nav__link");
+
+    trigger.addEventListener("click", (e) => {
+      if (window.innerWidth <= 1118) {
+        e.preventDefault();
+        item.classList.toggle("open");
+      }
     });
   });
 });
@@ -163,10 +164,150 @@ tabs.forEach(tab => {
 /* =========================
    BERITA SLIDER (.berita-slider)
 ========================= */
-const beritaSlider = document.querySelector('.berita-slider');
-document.querySelector('.next').addEventListener('click', () => {
-  beritaSlider.scrollBy({ left: 320, behavior: 'smooth' });
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.querySelector(".berita-slider");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  if (!slider || !prevBtn || !nextBtn) return;
+
+  let autoSlideInterval;
+
+  function getScrollAmount() {
+    const card = slider.querySelector(".berita-card");
+    const gap = 20;
+    return card ? card.offsetWidth + gap : 300;
+  }
+
+  function slideNext() {
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+    if (slider.scrollLeft >= maxScroll - 5) {
+      // balik ke awal kalau sudah mentok kanan
+      slider.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      slider.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+    }
+  }
+
+  function startAutoSlide() {
+    stopAutoSlide();
+    autoSlideInterval = setInterval(slideNext, 5000); // 5 detik
+  }
+
+  function stopAutoSlide() {
+    if (autoSlideInterval) clearInterval(autoSlideInterval);
+  }
+
+  // Tombol manual
+  nextBtn.addEventListener("click", () => {
+    slideNext();
+    startAutoSlide();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    slider.scrollBy({
+      left: -getScrollAmount(),
+      behavior: "smooth"
+    });
+    startAutoSlide();
+  });
+
+  // Pause saat hover (desktop)
+  slider.addEventListener("mouseenter", stopAutoSlide);
+  slider.addEventListener("mouseleave", startAutoSlide);
+
+  // Pause saat swipe (mobile)
+  slider.addEventListener("touchstart", stopAutoSlide);
+  slider.addEventListener("touchend", startAutoSlide);
+
+  // Start
+  startAutoSlide();
 });
-document.querySelector('.prev').addEventListener('click', () => {
-  beritaSlider.scrollBy({ left: -320, behavior: 'smooth' });
+
+/* =========================
+   YUKO SLIDER (LOAD GAMBAR SAAT AKTIF)
+========================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.querySelector(".yuko-sldr");
+  if (!slider) return;
+
+  const items = slider.querySelectorAll(".yuko-item");
+  const contents = slider.querySelectorAll(".yuko-content-item");
+  const bg = slider.querySelector(".yuko-sldr-bg");
+  const next = document.getElementById("next");
+  const prev = document.getElementById("prev");
+
+  let index = 0;
+  let autoTimer;
+
+  function loadImage(item) {
+    const img = item.querySelector("img");
+    if (img && !img.src) {
+      img.src = img.dataset.src;
+      img.loading = "lazy";
+      img.decoding = "async";
+    }
+  }
+
+  function showSlide(i) {
+    items.forEach(el => el.classList.remove("active"));
+    contents.forEach(el => el.classList.remove("active"));
+
+    const item = items[i];
+    item.classList.add("active");
+    contents[i]?.classList.add("active");
+
+    // load hanya saat aktif
+    loadImage(item);
+
+    // background ikut ganti
+    bg.style.backgroundImage = `url(${item.dataset.bg})`;
+
+    index = i;
+  }
+
+  function nextSlide() {
+    showSlide((index + 1) % items.length);
+  }
+
+  function prevSlide() {
+    showSlide((index - 1 + items.length) % items.length);
+  }
+
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(nextSlide, 5000);
+  }
+
+  function stopAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+  }
+
+  next?.addEventListener("click", () => {
+    nextSlide();
+    startAuto();
+  });
+
+  prev?.addEventListener("click", () => {
+    prevSlide();
+    startAuto();
+  });
+
+  slider.addEventListener("mouseenter", stopAuto);
+  slider.addEventListener("mouseleave", startAuto);
+
+  // INIT
+  loadImage(items[0]);
+  bg.style.backgroundImage = `url(${items[0].dataset.bg})`;
+  startAuto();
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.querySelector(".hero-new video");
+  if (!video) return;
+
+  video.pause();
+  setTimeout(() => video.play(), 500);
 });

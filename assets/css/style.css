@@ -390,6 +390,19 @@ img {
       transform: rotate(180deg);
     }
 
+/* =========================
+   DISABLE HOVER ON MOBILE
+========================= */
+@media (max-width: 1118px) {
+  .dropdown__item:hover .dropdown__menu {
+    max-height: 0 !important;
+  }
+
+  .dropdown__item:hover .dropdown__arrow {
+    transform: none !important;
+  }
+}
+
 /*===============================================
   HERO SECTION
 ===============================================*/
@@ -408,24 +421,35 @@ img {
 
 .hero-new video {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
-  opacity: 0.8;
   object-position: 35% 0;
+  z-index: 1;
+  opacity: 0.85;
+
+  /* OPTIMASI GPU */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
+
 
 .hero-new h5,
 .hero-new h1,
 .hero-new .btn {
   position: relative;
-  color: #ffffff;
-  z-index: 2;
-  filter: drop-shadow(8px 8px 10px rgb(0, 0, 0)) drop-shadow(-2px -2px rgb(0, 0, 0));
+  z-index: 3;
+  color: #fff;
+
+  text-shadow:
+    0 2px 2px rgba(0,0,0,0.95),
+    0 4px 8px rgba(0,0,0,0.85),
+    0 10px 20px rgba(0,0,0,0.75);
 }
+
+
 
 .hero-new h5 {
   font-size: clamp(12px, 2.5vw, 18px);
@@ -460,6 +484,22 @@ img {
   border-color: #fff;
   transform: translateY(-2px);
 }
+
+.hero-new::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0.45) 0%,
+    rgba(0,0,0,0.25) 35%,
+    rgba(0,0,0,0.05) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
 
 .hero-new::before {
   content: "";
@@ -1155,6 +1195,45 @@ img {
   color: #000;
   line-height: 1.4;
 }
+
+/* ===============================
+   INFO SECTION - RESPONSIVE FIX
+================================ */
+
+/* Tablet & Mobile */
+@media (max-width: 768px) {
+  .info-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px 12px;
+  }
+
+  .info-card {
+    flex: 0 1 calc(50% - 12px); /* 2 CARD PER BARIS */
+    max-width: calc(50% - 12px);
+    padding: 14px;
+  }
+
+  .info-card i {
+    font-size: 3.2rem;
+    margin-bottom: 8px;
+  }
+
+  .info-card p {
+    font-size: 0.85rem;
+  }
+}
+
+/* HP KECIL SAJA → 1 kolom */
+@media (max-width: 420px) {
+  .info-card {
+    flex: 0 1 100%;
+    max-width: 100%;
+  }
+}
+
 /*===============================================
   PROGRAM SECTION
 ===============================================*/
@@ -1641,6 +1720,103 @@ img {
     transform: translateY(0);
   }
 }
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+@media (max-width: 768px) {
+
+  .yuko-sldr {
+    min-height: 100vh;
+    justify-content: flex-start;
+    padding-top: 80px;
+  }
+
+  /* Background blur diringankan di mobile */
+  .yuko-sldr-bg {
+    filter: blur(8px) scale(1.1);
+  }
+
+  /* Container jadi vertikal */
+  .yuko-container {
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* IMAGE SLIDER */
+  .yuko-slider {
+    width: 90%;
+    max-width: 300px;
+    height: 360px;
+  }
+
+  .yuko-item img {
+    object-fit: contain;
+  }
+
+  /* TEXT */
+  .yuko-content {
+    width: 100%;
+    min-height: auto;
+    justify-content: center;
+  }
+
+  .yuko-content h2 {
+    font-size: 22px;
+  }
+
+  .yuko-content p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .yuko-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  /* NAV */
+  .yuko-nav {
+    margin-top: 20px;
+    gap: 14px;
+  }
+
+  .yuko-nav button {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  .yuko-dots span {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* =========================
+   EXTRA SMALL (HP KECIL)
+========================= */
+@media (max-width: 480px) {
+
+  .yuko-slider {
+    height: 300px;
+  }
+
+  .yuko-content h2 {
+    font-size: 20px;
+  }
+
+  .yuko-content p {
+    font-size: 13px;
+  }
+
+  .yuko-sldr-bg {
+    filter: blur(6px) scale(1.05);
+  }
+}
+
 /*===============================================
   MM2100 SUPPORT SECTION
 ===============================================*/
@@ -1862,6 +2038,10 @@ img {
 @media screen and (max-width: 575px) {
   .container {
     padding: 0 1rem;
+  }
+
+  body {
+    padding: 45px 0 0 0;
   }
 
   .header {
