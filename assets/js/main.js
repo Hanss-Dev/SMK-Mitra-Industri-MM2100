@@ -18,107 +18,99 @@ document.addEventListener("DOMContentLoaded", () => {
   const dropdownItems = document.querySelectorAll(".dropdown__item");
 
   dropdownItems.forEach(item => {
-    const trigger = item.querySelector(".nav__link");
-
-    trigger.addEventListener("click", (e) => {
-      if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
-        e.preventDefault();
-        e.stopPropagation(); // WAJIB biar tidak langsung ketutup
-        item.classList.toggle("open");
-      }
-    });
-  });
-});
-
-/* =========================
-   CLOSE DROPDOWN ON OUTSIDE CLICK
-========================= */
-document.addEventListener("click", (e) => {
-  // hanya untuk TOUCH device
-  if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
-    const clickedInsideDropdown = e.target.closest(".dropdown__item");
-
-    if (!clickedInsideDropdown) {
-      document
-        .querySelectorAll(".dropdown__item.open")
-        .forEach(item => item.classList.remove("open"));
-    }
-  }
-});
-
-
-/* =========================
-   SLIDER HERO (smi-lite)
-========================= */
-document.addEventListener("DOMContentLoaded", () => {
-  const track = document.querySelector(".smi-liteTrack");
-  const slides = document.querySelectorAll(".smi-liteSlide");
-  const prevBtn = document.querySelector(".smi-liteBtn.prev");
-  const nextBtn = document.querySelector(".smi-liteBtn.next");
-  const dotsContainer = document.querySelector(".smi-liteDots");
-
-  let currentPage = 0;
-  let slidesPerPage = window.innerWidth > 992 ? 2 : 1;
-  let totalPages = Math.ceil(slides.length / slidesPerPage);
-  let slideWidth = slides[0].offsetWidth + 16;
-
-  function createDots() {
-    dotsContainer.innerHTML = "";
-    for (let i = 0; i < totalPages; i++) {
-      const dot = document.createElement("button");
-      dot.classList.add("dot");
-      if (i === currentPage) dot.classList.add("active");
-      dot.addEventListener("click", () => {
-        currentPage = i;
-        updateSlider();
+    const link = item.querySelector(".nav__link");
+    link.addEventListener("click", () => {
+      // tutup semua dropdown lain
+      dropdownItems.forEach(i => {
+        if (i !== item) i.classList.remove("open");
       });
-      dotsContainer.appendChild(dot);
-    }
-  }
-
-  function updateSlider() {
-    const offset = currentPage * slideWidth * slidesPerPage;
-    track.style.transform = `translateX(-${offset}px)`;
-    updateDots();
-  }
-
-  function updateDots() {
-    const dots = dotsContainer.querySelectorAll(".dot");
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("active", i === currentPage);
+      // toggle dropdown yang diklik
+      item.classList.toggle("open");
     });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.querySelector(".smi-liteSlider");
+  const viewport = slider.querySelector(".smi-liteViewport");
+  const track = slider.querySelector(".smi-liteTrack");
+  const slides = Array.from(slider.querySelectorAll(".smi-liteSlide"));
+  const prev = slider.querySelector(".prev");
+  const next = slider.querySelector(".next");
+  const dotsWrap = slider.querySelector(".smi-liteDots");
+
+  let index = 0;                 // slide aktif
+  const total = slides.length;   // total slide
+
+  /* =====================
+     CORE UPDATE (CENTER)
+  ===================== */
+  function update() {
+    const slide = slides[0];
+    const slideRect = slide.getBoundingClientRect();
+    const slideWidth = slideRect.width;
+
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+
+    // offset supaya slide aktif pas di tengah viewport
+    const offset =
+      index * (slideWidth + gap) -
+      (viewport.clientWidth - slideWidth) / 2;
+
+    track.style.transform = `translateX(-${Math.max(offset, 0)}px)`;
+
+    // update dots
+    dotsWrap.querySelectorAll("button").forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
+
+    // update nav
+    prev.classList.toggle("disabled", index === 0);
+    next.classList.toggle("disabled", index === total - 1);
   }
 
-  prevBtn.addEventListener("click", () => {
-    if (currentPage > 0) {
-      currentPage--;
-      updateSlider();
+  /* =====================
+     DOTS
+  ===================== */
+  function buildDots() {
+    dotsWrap.innerHTML = "";
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement("button");
+      if (i === index) dot.classList.add("active");
+      dot.addEventListener("click", () => {
+        index = i;
+        update();
+      });
+      dotsWrap.appendChild(dot);
+    }
+  }
+
+  /* =====================
+     NAVIGATION
+  ===================== */
+  prev.addEventListener("click", () => {
+    if (index > 0) {
+      index--;
+      update();
     }
   });
 
-  nextBtn.addEventListener("click", () => {
-    if (currentPage < totalPages - 1) {
-      currentPage++;
-      updateSlider();
+  next.addEventListener("click", () => {
+    if (index < total - 1) {
+      index++;
+      update();
     }
   });
 
-  setInterval(() => {
-    currentPage = (currentPage < totalPages - 1) ? currentPage + 1 : 0;
-    updateSlider();
-  }, 4000);
-
+  /* =====================
+     RESIZE (RE-CENTER)
+  ===================== */
   window.addEventListener("resize", () => {
-    slidesPerPage = window.innerWidth > 992 ? 2 : 1;
-    totalPages = Math.ceil(slides.length / slidesPerPage);
-    slideWidth = slides[0].offsetWidth + 16;
-    if (currentPage >= totalPages) currentPage = totalPages - 1;
-    createDots();
-    updateSlider();
+    update(); // cukup hitung ulang posisi center
   });
 
-  createDots();
-  updateSlider();
+  buildDots();
+  update();
 });
 
 /* =========================
