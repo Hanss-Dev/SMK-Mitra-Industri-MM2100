@@ -318,3 +318,23 @@ document.addEventListener("DOMContentLoaded", () => {
   video.pause();
   setTimeout(() => video.play(), 500);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const popup = document.getElementById('ppdb-popup');
+  const popupClose = popup.querySelector('.close-btn');
+
+  function openPopup() {
+    popup.style.display = 'flex';
+  }
+
+  function closePopup() {
+    popup.style.display = 'none';
+  }
+
+  setTimeout(openPopup, 1500);
+
+  popupClose.addEventListener('click', closePopup);
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) closePopup();
+  });
+});

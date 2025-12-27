@@ -73,6 +73,145 @@ img {
 /*===============================================
   REUSABLE CLASSES
 ===============================================*/
+/* Base styles */
+/* ===== Popup Base ===== */
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== Kontainer Popup ===== */
+.popup-content {
+    position: relative;
+    width: 70%;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* ===== Body Popup: gambar + konten ===== */
+.popup-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.popup-body img {
+    max-width: 280px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    display: block;
+}
+
+/* ===== Tombol Close ===== */
+.close-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: background 0.3s ease;
+}
+.close-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* ===== Kolom Konten ===== */
+.column {
+    flex: 1;
+    padding: 10px;
+}
+
+.content h2 {
+    text-align: center;
+    margin: 10px 0;
+    color: #333;
+    font-size: 18px;
+}
+
+/* ===== Grup Tombol ===== */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* ===== Tombol Brosur ===== */
+.btn-brosur {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: #0073e6;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+    font-size: 14px;
+}
+.btn-brosur:hover {
+    background: #005bb5;
+}
+.btn-brosur i {
+    font-size: 16px;
+}
+
+/* ===== Responsif untuk layar kecil ===== */
+@media (max-width: 600px) {
+    .popup-content {
+        width: 85%;          /* jangan full, sisakan ruang */
+        max-width: 360px;    /* batasi lebar */
+        padding: 12px;
+        margin: 20px;        /* beri jarak dari tepi layar */
+    }
+
+    .popup-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .popup-body img {
+        max-width: 100%;
+    }
+
+    .content h2 {
+        font-size: 16px;
+    }
+
+    .button-group {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .btn-brosur {
+        width: auto;         /* tidak full width */
+        min-width: 70%;      /* cukup lebar tapi ada ruang */
+        justify-content: center;
+        font-size: 15px;
+        padding: 12px;
+    }
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -150,7 +289,7 @@ img {
 
 .nav__logo img {
   height: auto;
-  max-height: 60px;
+  max-height: 80px;
   width: auto;
 }
 
@@ -2077,7 +2216,7 @@ img {
   }
 
   .nav__logo img {
-    max-height: 45px;
+    max-height: 60px;
   }
 
   .dropdown__menu a {
