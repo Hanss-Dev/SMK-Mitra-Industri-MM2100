@@ -212,6 +212,52 @@ img {
         padding: 12px;
     }
 }
+
+@media (max-width: 375px) {
+  .popup-content {
+        width: 85%;          /* jangan full, sisakan ruang */
+        max-width: 360px;    /* batasi lebar */
+        padding: 12px;
+        margin: 20px;        /* beri jarak dari tepi layar */
+        height: 80%;
+  }
+
+  .popup-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0;
+    }
+
+    .popup-body img {
+        max-width: 75%;
+    }
+
+    .content h2 {
+        font-size: 12px;
+        margin-top: 0;
+    }
+
+    .button-group {
+        width: 100%;
+        gap: 5px;
+        margin-top: 0;
+    }
+
+    .btn-brosur {
+        width: auto;         /* tidak full width */
+        min-width: 70%;      /* cukup lebar tapi ada ruang */
+        justify-content: center;
+        font-size: 12px;
+        padding: 7px;
+    }
+
+    .popup-body a {
+      display: flex;
+      justify-content: center;
+    }
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
