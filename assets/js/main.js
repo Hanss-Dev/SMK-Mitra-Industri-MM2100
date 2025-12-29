@@ -338,3 +338,22 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.target === popup) closePopup();
   });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const figuran = document.querySelector(".vt-vr");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          figuran.classList.add("is-visible");
+          observer.unobserve(figuran);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  observer.observe(figuran);
+});

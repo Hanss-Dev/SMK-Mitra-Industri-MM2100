@@ -73,190 +73,281 @@ img {
 /*===============================================
   REUSABLE CLASSES
 ===============================================*/
+.vt-astra {
+  position: relative;
+  width: 100%;
+  padding: 120px 0 80px;
+  background: linear-gradient(180deg, #0b1c2d, #020617);
+  color: #fff;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* CONTENT */
+.vt-content {
+  position: relative;
+  z-index: 3;
+  max-width: 800px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.vt-content h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.vt-content p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #cbd5f5;
+  margin-bottom: 30px;
+}
+
+/* BUTTON */
+.vt-btn {
+  display: inline-block;
+  padding: 14px 34px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #020617;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.vt-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+/* VISUAL */
+.vt-visual {
+  position: relative;
+  margin-top: 80px;
+  z-index: 2;
+}
+
+.vt-bg {
+  width: 100%;
+  max-width: 1400px;
+  display: block;
+  margin: auto;
+}
+
+/* VR ILLUSTRATION (ABSOLUTE) */
+.vt-vr {
+  position: absolute;
+  right: 10%;
+  bottom: -40px;
+  width: 420px;
+  max-width: 70vw;
+  z-index: 4;
+
+  /* === STATE AWAL (SEMBUNYI) === */
+  opacity: 0;
+  transform: translateY(120px);
+
+  transition:
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease;
+}
+
+.vt-vr.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .vt-vr {
+    right: 50%;
+    transform: translateX(50%);
+    width: 300px;
+  }
+}
+
+
+.vt-content {
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Base styles */
 /* ===== Popup Base ===== */
+/* ===== POPUP OVERLAY ===== */
 .popup {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* ===== Kontainer Popup ===== */
+/* ===== POPUP BOX ===== */
 .popup-content {
-    position: relative;
-    width: 70%;
-    max-width: 600px;
-    background: #fff;
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  position: relative;
+  width: min(640px, 92%);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px 22px;
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.25),
+    0 2px 8px rgba(0,0,0,0.08);
+
+  max-height: 90vh;
+  overflow-y: auto;
+
+  animation: popupFade 0.35s ease;
 }
 
-/* ===== Body Popup: gambar + konten ===== */
-.popup-body {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
+/* ===== ANIMATION ===== */
+@keyframes popupFade {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
-.popup-body img {
-    max-width: 280px;
-    flex-shrink: 0;
-    border-radius: 6px;
-    display: block;
-}
-
-/* ===== Tombol Close ===== */
+/* ===== CLOSE BUTTON ===== */
 .close-btn {
-    position: absolute;
-    top: 6px;
-    right: 6px;
-    width: 24px;
-    height: 24px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-    transition: background 0.3s ease;
-}
-.close-btn:hover {
-    background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+
+  background: #f1f5f9;
+  color: #020617;
+  font-size: 18px;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* ===== Kolom Konten ===== */
+.close-btn:hover {
+  background: #020617;
+  color: #fff;
+}
+
+/* ===== BODY ===== */
+.popup-body {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+/* IMAGE */
+.popup-body img {
+  width: 260px;
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* ===== CONTENT ===== */
 .column {
-    flex: 1;
-    padding: 10px;
+  flex: 1;
 }
 
 .content h2 {
-    text-align: center;
-    margin: 10px 0;
-    color: #333;
-    font-size: 18px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #020617;
+  margin-bottom: 14px;
+  text-align: center;
 }
 
-/* ===== Grup Tombol ===== */
+/* ===== BUTTON GROUP ===== */
 .button-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
 }
 
-/* ===== Tombol Brosur ===== */
+/* ===== BUTTON ===== */
 .btn-brosur {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 20px;
-    background: #0073e6;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background 0.3s ease;
-    font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .btn-brosur:hover {
-    background: #005bb5;
-}
-.btn-brosur i {
-    font-size: 16px;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(37,99,235,0.4);
 }
 
-/* ===== Responsif untuk layar kecil ===== */
-@media (max-width: 600px) {
-    .popup-content {
-        width: 85%;          /* jangan full, sisakan ruang */
-        max-width: 360px;    /* batasi lebar */
-        padding: 12px;
-        margin: 20px;        /* beri jarak dari tepi layar */
-    }
-
-    .popup-body {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 15px;
-    }
-
-    .popup-body img {
-        max-width: 100%;
-    }
-
-    .content h2 {
-        font-size: 16px;
-    }
-
-    .button-group {
-        width: 100%;
-        gap: 10px;
-    }
-
-    .btn-brosur {
-        width: auto;         /* tidak full width */
-        min-width: 70%;      /* cukup lebar tapi ada ruang */
-        justify-content: center;
-        font-size: 15px;
-        padding: 12px;
-    }
-}
-
-@media (max-width: 375px) {
-  .popup-content {
-        width: 85%;          /* jangan full, sisakan ruang */
-        max-width: 360px;    /* batasi lebar */
-        padding: 12px;
-        margin: 20px;        /* beri jarak dari tepi layar */
-        height: 80%;
+/* ===== TABLET & MOBILE ===== */
+@media (max-width: 768px) {
+  .popup-body {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .popup-body {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 0;
-    }
+  .popup-body img {
+    width: 220px;
+  }
 
-    .popup-body img {
-        max-width: 75%;
-    }
-
-    .content h2 {
-        font-size: 12px;
-        margin-top: 0;
-    }
-
-    .button-group {
-        width: 100%;
-        gap: 5px;
-        margin-top: 0;
-    }
-
-    .btn-brosur {
-        width: auto;         /* tidak full width */
-        min-width: 70%;      /* cukup lebar tapi ada ruang */
-        justify-content: center;
-        font-size: 12px;
-        padding: 7px;
-    }
-
-    .popup-body a {
-      display: flex;
-      justify-content: center;
-    }
+  .content h2 {
+    font-size: 18px;
+  }
 }
+
+/* ===== SMALL MOBILE ===== */
+@media (max-width: 375px) {
+  .popup-content {
+    padding: 18px 16px;
+  }
+
+  .popup-body img {
+    width: 200px;
+  }
+
+  .btn-brosur {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
 
 .container {
   max-width: 1200px;
