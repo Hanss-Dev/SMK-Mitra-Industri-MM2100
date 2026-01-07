@@ -357,3 +357,178 @@ document.addEventListener("DOMContentLoaded", () => {
 
   observer.observe(figuran);
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.querySelector(".smi-liteSlider");
+  const track  = slider.querySelector(".smi-liteTrack");
+  const slides = slider.querySelectorAll(".smi-liteSlide");
+  const prevBtn = slider.querySelector(".smi-liteBtn.prev");
+  const nextBtn = slider.querySelector(".smi-liteBtn.next");
+  const dotsWrap = slider.querySelector(".smi-liteDots");
+
+  if (!track || slides.length === 0) return;
+
+  const GAP = 16;
+  let index = 0;
+  let timer;
+
+  function slideWidth() {
+    return slides[0].offsetWidth + GAP;
+  }
+
+  function visibleCount() {
+    return Math.round(
+      slider.querySelector(".smi-liteViewport").offsetWidth /
+      slides[0].offsetWidth
+    );
+  }
+
+  function maxIndex() {
+    return slides.length - visibleCount();
+  }
+
+  function update() {
+    track.style.transform = `translateX(-${index * slideWidth()}px)`;
+    updateDots();
+  }
+
+  function next() {
+    if (index >= maxIndex()) {
+      index = 0; // 🔥 BALIK KE AWAL
+    } else {
+      index++;
+    }
+    update();
+  }
+
+  function prev() {
+    if (index <= 0) {
+      index = maxIndex(); // 🔥 LOMPAT KE AKHIR
+    } else {
+      index--;
+    }
+    update();
+  }
+
+  /* DOTS */
+  function buildDots() {
+    dotsWrap.innerHTML = "";
+    for (let i = 0; i <= maxIndex(); i++) {
+      const d = document.createElement("button");
+      d.addEventListener("click", () => {
+        index = i;
+        update();
+        restart();
+      });
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function updateDots() {
+    const dots = dotsWrap.querySelectorAll("button");
+    dots.forEach((d, i) => {
+      d.classList.toggle("active", i === index);
+    });
+  }
+
+  /* AUTOPLAY */
+  function start() {
+    stop();
+    timer = setInterval(next, 5000);
+  }
+
+  function stop() {
+    if (timer) clearInterval(timer);
+  }
+
+  function restart() {
+    stop();
+    start();
+  }
+
+  nextBtn.addEventListener("click", () => {
+    next();
+    restart();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    prev();
+    restart();
+  });
+
+  slider.addEventListener("mouseenter", stop);
+  slider.addEventListener("mouseleave", start);
+
+  slider.addEventListener("touchstart", stop);
+  slider.addEventListener("touchend", start);
+
+  window.addEventListener("resize", () => {
+    index = Math.min(index, maxIndex());
+    buildDots();
+    update();
+  });
+
+  buildDots();
+  update();
+  start();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".jg-track");
+  const slides = document.querySelectorAll(".jg-slide");
+  if (!track || slides.length === 0) return;
+
+  let index = 0;
+  let startX = 0;
+  let isDragging = false;
+
+  function slidesPerView() {
+    if (window.innerWidth <= 600) return 1;
+    if (window.innerWidth <= 992) return 2;
+    return 4;
+  }
+
+  function updateSlider() {
+    const slideWidth = slides[0].offsetWidth;
+    track.style.transform = `translateX(-${index * slideWidth}px)`;
+  }
+
+  function next() {
+    const maxIndex = slides.length - slidesPerView();
+    if (index >= maxIndex) {
+      index = 0; // BALIK KE AWAL
+    } else {
+      index++;
+    }
+    updateSlider();
+  }
+
+  function prev() {
+    if (index <= 0) {
+      index = slides.length - slidesPerView();
+    } else {
+      index--;
+    }
+    updateSlider();
+  }
+
+  // TOUCH EVENTS (HP)
+  track.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+
+  track.addEventListener("touchend", e => {
+    if (!isDragging) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+
+    if (diff > 50) next();
+    else if (diff < -50) prev();
+
+    isDragging = false;
+  });
+
+  window.addEventListener("resize", updateSlider);
+});

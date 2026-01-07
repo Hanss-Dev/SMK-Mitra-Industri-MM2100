@@ -131,17 +131,19 @@ img {
 }
 
 .vt-bg {
+  position: relative;
   width: 100%;
   max-width: 1400px;
   display: block;
   margin: auto;
+  z-index: 999;
 }
 
 /* VR ILLUSTRATION (ABSOLUTE) */
 .vt-vr {
   position: absolute;
-  right: 10%;
-  bottom: -40px;
+  right: 40%;
+  bottom: 500px;
   width: 420px;
   max-width: 70vw;
   z-index: 4;
@@ -161,9 +163,10 @@ img {
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+@media (max-width: 769px) {
   .vt-vr {
-    right: 50%;
+    top: -50%;
+    right: 30%;
     transform: translateX(50%);
     width: 300px;
   }
@@ -2139,7 +2142,7 @@ img {
 ===============================================*/
 .comment-section {
   background: linear-gradient(rgba(4, 29, 84, 0.83), rgba(19, 57, 141, 0.78)),
-    url(../img/gedung.png);
+    url(../img/gedung2.jpeg);
   padding: 30px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   color: #fff;

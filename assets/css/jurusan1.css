@@ -8,7 +8,7 @@
 
 /* ================= ARTICLE WRAPPER ================= */
 .jurusan-article {
-  max-width: 1145px;
+  max-width: 1200px;
   margin: 75px auto 0;
   font-family: 'Poppins', sans-serif;
   line-height: 1.7;
@@ -237,6 +237,94 @@
   transform: translateY(-4px);
   box-shadow: 0 30px 60px rgba(255, 75, 92, 0.45);
 }
+
+/* ===============================
+   JURUSAN GALLERY (EDITORIAL)
+================================ */
+.jurusan-gallery {
+  margin: 64px auto;
+  padding: 0 16px;
+  max-width: 1200px;
+}
+
+.jurusan-gallery__header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.jurusan-gallery__header h2 {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.jurusan-gallery__header p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ===== GRID DESKTOP ===== */
+.jurusan-gallery__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-auto-rows: 220px;
+  gap: 16px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* FOTO UTAMA */
+.gallery-item--main {
+  grid-row: span 2;
+}
+
+/* CAPTION */
+.gallery-item figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0,0,0,.65), transparent);
+}
+
+/* ===============================
+   MOBILE → SWIPE TANPA JS
+================================ */
+@media (max-width: 768px) {
+  .jurusan-gallery__grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 14px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+  }
+
+  .gallery-item {
+    flex: 0 0 80%;
+    height: 220px;
+    scroll-snap-align: center;
+  }
+
+  .gallery-item--main {
+    flex: 0 0 90%;
+  }
+}
+
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
