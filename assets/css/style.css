@@ -163,7 +163,25 @@ img {
 }
 
 /* RESPONSIVE */
+@media screen and (max-width: 1118px) {
+    .vt-vr {
+    top: -21%;
+    right: 44%;
+    transform: translateX(50%);
+    width: 420px;
+  }
+}
+
 @media (max-width: 769px) {
+  .vt-vr {
+    top: -22%;
+    right: 40%;
+    transform: translateX(50%);
+    width: 300px;
+  }
+}
+
+@media (max-width: 575px) {
   .vt-vr {
     top: -50%;
     right: 30%;
