@@ -76,7 +76,7 @@ img {
 .vt-astra {
   position: relative;
   width: 100%;
-  padding: 120px 0 80px;
+  padding: 120px 0 0;
   background: linear-gradient(180deg, #0b1c2d, #020617);
   color: #fff;
   overflow: hidden;
