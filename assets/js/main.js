@@ -532,3 +532,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("resize", updateSlider);
 });
+
+// =======================================
+// NILAI UTAMA – TRUE 3D POP (PER ITEM)
+// =======================================
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".nilai-item");
+
+  if (!items.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // delay bertahap biar kerasa "nimbul satu-satu"
+          setTimeout(() => {
+            entry.target.classList.add("is-visible");
+          }, index * 180);
+
+          obs.unobserve(entry.target); // jalan sekali
+        }
+      });
+    },
+    {
+      threshold: 0.35,
+      rootMargin: "0px 0px -80px 0px",
+    }
+  );
+
+  items.forEach(item => observer.observe(item));
+});

@@ -1156,6 +1156,121 @@ img {
   .smi-liteBtn.prev { left: 8px; }
   .smi-liteBtn.next { right: 8px; }
 }
+
+/* =========================================
+   KESUKSESAN ALUMNI
+========================================= */
+.alumni-success {
+  background: #f5f7fb;
+  padding: 60px 20px;
+}
+
+.alumni-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* HEADER */
+.alumni-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.alumni-header h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 12px;
+  color: #1f2a44;
+}
+
+.alumni-header p {
+  max-width: 700px;
+  margin: auto;
+  color: #555;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* GRID */
+.alumni-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* CARD */
+.alumni-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.alumni-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.15);
+}
+
+/* PHOTO */
+.alumni-photo {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.alumni-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.alumni-card:hover img {
+  transform: scale(1.08);
+}
+
+/* BADGE */
+.alumni-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+/* INFO */
+.alumni-info {
+  padding: 18px;
+}
+
+.alumni-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #1f2a44;
+}
+
+.alumni-role {
+  font-size: 14px;
+  color: #0066ff;
+  margin-bottom: 4px;
+}
+
+.alumni-company {
+  font-size: 13px;
+  color: #666;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .alumni-photo {
+    height: 180px;
+  }
+}
+
 /*===============================================
   NETWORK SECTION
 ===============================================*/
@@ -1332,8 +1447,9 @@ img {
 }
 
 /*===============================================
-  NILAI UTAMA SECTION
+  NILAI UTAMA – SLOW DEEP 3D POP (FINAL)
 ===============================================*/
+
 .nilai-utama {
   background: linear-gradient(rgba(4, 29, 84, 0.83), rgba(19, 57, 141, 0.78)),
     url("../img/gedung.png");
@@ -1342,56 +1458,149 @@ img {
   background-position: center;
   padding: 40px 20px;
   text-align: center;
+
+  perspective: 2600px; /* lebih dalam */
+  perspective-origin: center;
 }
 
 .nilai-utama h2 {
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  color: #ffffff;
-  margin-bottom: 25px;
-  font-weight: var(--font-bold);
+  color: white;
 }
 
+/* GRID */
 .nilai-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 25px;
-  padding: 0 15px;
 }
 
-/* Setiap item */
+/* ===============================
+   STATE AWAL — DI DALAM LAYAR
+=============================== */
 .nilai-item {
   flex: 1 1 calc(50% - 25px);
   max-width: 200px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
+
+  opacity: 0;
+  transform:
+    translateY(90px)
+    translateZ(-520px)
+    rotateX(32deg)
+    scale(0.68);
+
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
 }
 
-.nilai-item.last-center {
-  margin-left: auto;
-  margin-right: auto;
-}
-
+/* IMAGE */
 .nilai-item img {
   width: 100%;
   max-width: 150px;
-  height: auto;
   max-height: 140px;
   object-fit: contain;
-  margin: 0 auto;
+
+  opacity: 0;
+  transform:
+    translateZ(-260px)
+    scale(0.6);
 }
 
+/* TEXT */
 .nilai-item p {
   margin-top: 10px;
   font-weight: 600;
   color: #fff;
-  font-size: clamp(var(--normal-font-size), 1rem + 0.5vw, 1.25rem);
-  line-height: 1.6;
-  text-align: center;
+
+  opacity: 0;
+  transform: translateY(36px);
 }
+
+/* ===============================
+   AKTIF (SATU-SATU, PELAN)
+=============================== */
+.nilai-item.is-visible {
+  animation: nilaiItemSlow3D 1.6s cubic-bezier(.18,1,.32,1) forwards;
+}
+
+.nilai-item.is-visible img {
+  animation: nilaiImgSlow3D 1.2s cubic-bezier(.18,1,.32,1) forwards;
+}
+
+.nilai-item.is-visible p {
+  animation: nilaiTextSlow 1s ease-out forwards;
+}
+
+/* ===============================
+   DELAY JELAS (ADA JEDA)
+=============================== */
+.nilai-item:nth-child(1) { animation-delay: 0.0s; }
+.nilai-item:nth-child(2) { animation-delay: 0.6s; }
+.nilai-item:nth-child(3) { animation-delay: 1.2s; }
+.nilai-item:nth-child(4) { animation-delay: 1.8s; }
+.nilai-item:nth-child(5) { animation-delay: 2.4s; }
+
+.nilai-item:nth-child(1) img { animation-delay: 0.3s; }
+.nilai-item:nth-child(2) img { animation-delay: 0.9s; }
+.nilai-item:nth-child(3) img { animation-delay: 1.5s; }
+.nilai-item:nth-child(4) img { animation-delay: 2.1s; }
+.nilai-item:nth-child(5) img { animation-delay: 2.7s; }
+
+.nilai-item:nth-child(1) p { animation-delay: 0.6s; }
+.nilai-item:nth-child(2) p { animation-delay: 1.2s; }
+.nilai-item:nth-child(3) p { animation-delay: 1.8s; }
+.nilai-item:nth-child(4) p { animation-delay: 2.4s; }
+.nilai-item:nth-child(5) p { animation-delay: 3.0s; }
+
+/* ===============================
+   KEYFRAMES — PELAN & DALAM
+=============================== */
+@keyframes nilaiItemSlow3D {
+  70% {
+    opacity: 1;
+    transform:
+      translateY(-6px)
+      translateZ(80px)
+      rotateX(-6deg)
+      scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform:
+      translateY(0)
+      translateZ(0)
+      rotateX(0)
+      scale(1);
+  }
+}
+
+@keyframes nilaiImgSlow3D {
+  70% {
+    opacity: 1;
+    transform:
+      translateZ(120px)
+      scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform:
+      translateZ(0)
+      scale(1);
+  }
+}
+
+@keyframes nilaiTextSlow {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /*===============================================
   KEUNGGULAN SECTION
@@ -2124,6 +2333,104 @@ img {
 
   .yuko-sldr-bg {
     filter: blur(6px) scale(1.05);
+  }
+}
+
+/* ================================
+   CARD CAROUSEL SECTION
+================================ */
+.card-carousel-section {
+  padding: 40px 20px;
+  background: #f5f7fb;
+}
+
+.card-carousel-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* ================================
+   CARD ITEM
+================================ */
+.card-carousel-item {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card-carousel-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+}
+
+/* ================================
+   IMAGE
+================================ */
+.card-image {
+  display: block;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.card-carousel-item:hover img {
+  transform: scale(1.06);
+}
+
+/* ================================
+   CONTENT
+================================ */
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1f2a44;
+  line-height: 1.4;
+}
+
+/* ================================
+   BUTTON
+================================ */
+.card-btn {
+  align-self: flex-start;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #0066ff, #00c6ff);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,102,255,0.35);
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .card-content {
+    padding: 16px;
+  }
+
+  .card-title {
+    font-size: 1.05rem;
   }
 }
 
